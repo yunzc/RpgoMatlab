@@ -16,7 +16,7 @@ plot3(poseMat(:,1),poseMat(:,2),poseMat(:,3),'-','color',colorName,'LineWidth',1
 hold on
 for k=1:size(edges_id,1)
   id1 = edges_id(k,1); id2 = edges_id(k,2); 
-  if k > size(edges_id,1) - 0
+  if k > size(edges_id,1) % - number of outliers
       colorName = 'b';
   end
  
