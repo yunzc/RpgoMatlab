@@ -1,4 +1,4 @@
-function f = plotPose3Graph(poses, edges_id, colorName, titleName, prinfFig, f)
+function f = plotPose2Graph(poses, edges, colorName, titleName, prinfFig, f)
 number_of_outliers = 0;
 if nargin < 5
   prinfFig = 0;
@@ -6,17 +6,17 @@ end
 
 nrNodes = length(poses);
 for(i=1:nrNodes) 
-  poseMat(i,:) = poses(i).t'; 
+  poseMat(i,:) = poses(i,:); 
 end
 
 if nargin < 6 
   f = figure;
 end
-plot3(poseMat(:,1),poseMat(:,2),poseMat(:,3),'-','color',colorName,'LineWidth',1.5)
+plot(poseMat(:,1),poseMat(:,2),'-','color',colorName,'LineWidth',1.5)
 hold on
-for k=1:size(edges_id,1)
-  id1 = edges_id(k,1); id2 = edges_id(k,2); 
-  if k > size(edges_id,1) - number_of_outliers; 
+for k=1:size(edges,1)
+  id1 = edges(k,1); id2 = edges(k,2); 
+  if k > size(edges,1) - number_of_outliers; 
       colorName = 'b';
   end
  
