@@ -14,6 +14,7 @@ dof = 3;
         distMatrx = [distMatrx; row];
         i = i + 1;
     end
+    num_lc = 50
     fclose(fid);
     inliers = [];
     outliers = [];
