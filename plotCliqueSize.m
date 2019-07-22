@@ -19,7 +19,7 @@ function plotCliqueSize(dataFile)
             data = [data; row];
         end
     end
-    data(:,1) = data(:,1)/0.374;
+    data(:,1) = data(:,1);
     data = sortrows(data, 1);
     histdata = [];
     for i = 1:length(data)
@@ -39,16 +39,16 @@ function plotCliqueSize(dataFile)
     xlabel("threshold^2")
     ylabel("clique size")
     hold on
-    height = max(h.Values)-1;
+    height = max(h.Values);
     plot(data(:,1), height * chi2cdf(data(:,1),6), 'r','LineWidth',3)
     legend('# iniers','chi2 cdf 6','Location','northwest')
     
     % calculate sum of squares error
-    error = 0;
-    for i = 1, size(data,1)
-        error = error + (data(i,2) - height * chi2cdf(data(i,1),6))^2;
+    gof = 0;
+    for i = 1: size(data,1)
+        gof = gof + (data(i,2)/height - chi2cdf(data(i,1),6))^2 / chi2cdf(data(i,1),6);
     end
-    error
+    gof
 
 end
 
